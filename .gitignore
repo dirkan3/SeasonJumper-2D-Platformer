@@ -1,0 +1,31 @@
+# Ignore everything by default
+*
+
+# Allow only specific folders/files to be uploaded
+!/.gitignore
+!/.gitattributes
+!Assets/
+!Assets/Scripts/
+!Assets/Scenes/
+!ProjectSettings/
+
+# Ignore Unity-generated files
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# Ignore Unity Store assets
+/Assets/UnityAssets/
+/Assets/UnityAssets/*.meta
+
+# Ignore all meta files except in allowed folders
+*.meta
+!Assets/Scripts/*.meta
+!Assets/Scenes/*.meta
+!ProjectSettings/*.meta

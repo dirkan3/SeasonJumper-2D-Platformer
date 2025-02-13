@@ -1,28 +1,28 @@
-# Credits
+# License  
 
-## Third-Party Code
+This project contains code from the **Ultimate 2D Controller** by Matthew Spencer, which is licensed under the **MIT License**.  
+The full license text can be found in the [LICENSE](LICENSE) file.  
 
-### **Ultimate 2D Controller**
-- **Author:** Matthew J Spencer  
-- **License:** [MIT License](LICENSE) (included in this repository)  
-- **Source:** [GitHub Repository](https://github.com/Matthew-J-Spencer/Ultimate-2D-Controller)  
-- This project includes portions of code from the Ultimate 2D Controller, licensed under MIT.
+Other assets in this project were downloaded as free assets from the **Unity Asset Store**.  
+See [CREDITS.md](CREDITS.md) for a full list of credits and licensing details.  
 
-## Unity Free Assets
+If any licenses or documents are missing, please reach out, and I will try to fix the issue as soon as possible.  
 
-- **Various assets from the Unity Asset Store**  
-  - **Source:** [Unity Asset Store](https://assetstore.unity.com/)  
-  - **License:** Used under the [Unity Asset Store EULA](https://unity.com/legal/as-terms)  
-  - **Note:** Some assets may have individual licensing terms. If required, attribution is provided in the **in-game credits** section.
+---
 
-## In-Game Credits
-- A **Credits Section** has been added in the main menu of the game containing all assets and third-party code used in this project.
+# 🎮 Play the Game Online  
 
-## Tools & Game Engine
+> **INFO:** The game behaves differently in the online version in some aspects but will still hopefully bring some smiles!  
+> *(Movement and spacing to walls and obstacles is worse in WebGL compared to the desktop version.)*
 
-- **Unity Game Engine**  
-  - **Source:** [Unity](https://unity.com/)
+🔹 **WebGL version currently offline. Will be up soon! 😊**  
 
-## Notes
+[![Play Now](https://img.shields.io/badge/Play-Now-brightgreen?style=for-the-badge)](#)  
+*(Replace `#` with the actual WebGL link once available.)*
 
-If any credits are missing, please reach out so proper attribution can be added.
+---
+
+# 💡 Other  
+
+This is my **first project made public on GitHub** and my **first 2D platformer** created.  
+If you enjoy the game or have input for future improvements, please reach out and tell me! 😊  

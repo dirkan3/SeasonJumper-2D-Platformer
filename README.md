@@ -18,7 +18,6 @@ If any licenses or documents are missing, please reach out, and I will try to fi
 🔹 **WebGL version currently offline. Will be up soon! 😊**  
 
 [![Play Now](https://img.shields.io/badge/Play-Now-brightgreen?style=for-the-badge)](#)  
-*(Replace `#` with the actual WebGL link once available.)*
 
 ---
 

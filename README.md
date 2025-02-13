@@ -14,8 +14,8 @@ This repository contains **only the source code** (C# scripts & scenes).
 ## 🎮 **Want to Play the Game?**  
 You don’t need Unity to play!  
 
-👉 **[Play the full game online on Itch.io](https://dirkan3.itch.io/seasonjumper)**
-👉 **[Download for Windows](https://your-google-drive-link)**  
+👉 **[Play the game online (WebGL) or download for Windows on Itch.io](https://dirkan3.itch.io/seasonjumper)**  
+
 
 > **INFO:** The game behaves differently in the online version in some aspects but will still hopefully bring some smiles!  
 > *(Movement and spacing to walls and obstacles is worse in WebGL compared to the desktop version.)*  

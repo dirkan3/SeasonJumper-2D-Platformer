@@ -6,8 +6,11 @@
 !/.gitattributes
 !Assets/
 !Assets/Scripts/
+!Assets/Scripts/**  
 !Assets/Scenes/
+!Assets/Scenes/**  
 !ProjectSettings/
+!ProjectSettings/**  
 
 # Ignore Unity-generated files
 /[Ll]ibrary/
@@ -22,10 +25,10 @@
 
 # Ignore Unity Store assets
 /Assets/UnityAssets/
-/Assets/UnityAssets/*.meta
+/Assets/UnityAssets/**  # Ignore everything inside UnityAssets
 
-# Ignore all meta files except in allowed folders
+# Ignore meta files except in allowed folders
 *.meta
-!Assets/Scripts/*.meta
-!Assets/Scenes/*.meta
-!ProjectSettings/*.meta
+!Assets/Scripts/**/*.meta
+!Assets/Scenes/**/*.meta
+!ProjectSettings/**/*.meta

@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - oneWayPlatform
+  - Ladder
+  - Teleporter
+  - JumpPad
+  - HomeSpawn
+  - SummerSpawn
+  - Undefined
+  - Dorr
+  - Obstacle
+  - Persistent
+  - Wall
+  - HealthShop
+  - Audio
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Player
+  - Wall
+  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: sky
+    uniqueID: 2861933129
+    locked: 0
+  - name: background
+    uniqueID: 3891399713
+    locked: 0
+  - name: secondBackGround
+    uniqueID: 2701420287
+    locked: 0
+  - name: thirdBackGround
+    uniqueID: 2050443855
+    locked: 0
+  - name: middleBackGround
+    uniqueID: 2889828507
+    locked: 0
+  - name: foreGround
+    uniqueID: 63849917
+    locked: 0
+  - name: Visuals
+    uniqueID: 3875177639
+    locked: 0
+  - name: GridBackGround
+    uniqueID: 3347972857
+    locked: 0
+  - name: Ground
+    uniqueID: 3886091203
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: GridFront
+    uniqueID: 795188681
+    locked: 0

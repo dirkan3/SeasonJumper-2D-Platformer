@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     AudioManager audioManager;
     public float FrameVelocityX => _frameVelocity.x;
 
+    public bool UseAcceleration = false; // for testing
+
 
 
     void Start()
@@ -107,7 +109,7 @@ public class PlayerController : MonoBehaviour
             movement.y = Mathf.Abs(movement.y) < _stats.VerticalDeadZoneThreshold ? 0 : Mathf.Sign(movement.y);
         }
 
-        _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, movement.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+        //_frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, movement.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime); // removed to make game movement easier (update 1)
 
         animator.SetFloat("speed", MathF.Abs(_frameVelocity.x));
 
@@ -280,8 +282,6 @@ public class PlayerController : MonoBehaviour
 
         Ntr.emitting = false;
 
-        Debug.Log("Wall jump executed");
-
         float wallJumpDirection = -facingDirection;
 
 
@@ -290,14 +290,12 @@ public class PlayerController : MonoBehaviour
         _rb.velocity = Vector2.zero;  // Reset velocity
         _rb.AddForce(wallJumpForce, ForceMode2D.Impulse);
 
-        // Flip sprite if needed
         if ((wallJumpDirection > 0 && !isFacingRight) || (wallJumpDirection < 0 && isFacingRight))
         {
             FlipSprite();
         }
         audioManager.PlaySFX(audioManager.jump);
 
-        // Update states
         isWallSliding = false;
         isWallJumping = true;
         inputLockedAfterWallJump = true;
@@ -306,6 +304,8 @@ public class PlayerController : MonoBehaviour
         Invoke(nameof(ResetNoStick), NoStickDuration);
         _jumpToConsume = false;
         lastWallJumpTime = Time.time;
+
+        _frameVelocity.x = 0;
     }
 
     private void ResetNoStick()
@@ -380,11 +380,13 @@ public class PlayerController : MonoBehaviour
         float originalGravity = _rb.gravityScale;
         _rb.gravityScale = 0f;
 
-        Vector2 dashDirection = InputManager.movement.normalized;
+        Vector2 dashDirection = InputManager.movement == Vector2.zero
+            ? new Vector2(facingDirection, 0f)
+            : InputManager.movement.normalized;
+
         _frameVelocity = new Vector2(dashDirection.x * _stats.DashingPower, 0f);
 
         audioManager.PlaySFX(audioManager.dash);
-
         tr.emitting = true;
 
         float dashTimer = 0f;
@@ -392,7 +394,6 @@ public class PlayerController : MonoBehaviour
         {
             dashTimer += Time.deltaTime;
             _rb.velocity = _frameVelocity;
-
             yield return null;
         }
 
@@ -408,8 +409,49 @@ public class PlayerController : MonoBehaviour
 
     #region Horizontal
 
+    // previous Code implementation from first version of the game
 
-    private float _displacementXSmoothing;
+    //private float _displacementXSmoothing;
+    //private void HandleDirection()
+    //{
+    //    if (isDashing) return;
+
+    //    float inputX = InputManager.movement.x;
+    //    float targetVelocityX = inputX * _stats.MaxSpeed;
+
+    //    if (!UseAcceleration)
+    //    {
+    //        _frameVelocity.x = targetVelocityX;
+    //    }
+    //    else
+    //    {
+    //        if (inputX != 0 && Mathf.Sign(inputX) != Mathf.Sign(_frameVelocity.x))
+    //        {
+    //            _frameVelocity.x = 0;
+    //            _displacementXSmoothing = 0;
+    //        }
+
+    //        if (Mathf.Abs(inputX) < _stats.HorizontalDeadZoneThreshold)
+    //        {
+    //            float deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
+    //            _frameVelocity.x = Mathf.SmoothDamp(_frameVelocity.x, 0, ref _displacementXSmoothing, deceleration);
+    //        }
+    //        else
+    //        {
+    //            float timeSinceWallJump = Time.time - lastWallJumpTime;
+    //            float accelerationFactor = Mathf.Lerp(0.4f, 1f, timeSinceWallJump / 0.5f);
+    //            float acceleration = (_grounded ? _stats.Acceleration : _stats.FallAcceleration) * accelerationFactor;
+    //            _frameVelocity.x = Mathf.SmoothDamp(_frameVelocity.x, targetVelocityX, ref _displacementXSmoothing, acceleration);
+    //        }
+
+    //        if (Mathf.Abs(_frameVelocity.x) < 0.05f)
+    //        {
+    //            _frameVelocity.x = 0;
+    //        }
+    //    }
+    //}
+
+    //smaller and more basic movement with snappy movement for easier gameplay.
     private void HandleDirection()
     {
         if (isDashing) return;
@@ -417,29 +459,8 @@ public class PlayerController : MonoBehaviour
         float inputX = InputManager.movement.x;
         float targetVelocityX = inputX * _stats.MaxSpeed;
 
-        if (inputX != 0 && Mathf.Sign(inputX) != Mathf.Sign(_frameVelocity.x))
-        {
-            _frameVelocity.x = 0;
-            _displacementXSmoothing = 0;
-        }
 
-        if (Mathf.Abs(inputX) < _stats.HorizontalDeadZoneThreshold)
-        {
-            float deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
-            _frameVelocity.x = Mathf.SmoothDamp(_frameVelocity.x, 0, ref _displacementXSmoothing, deceleration);
-        }
-        else
-        {
-            float timeSinceWallJump = Time.time - lastWallJumpTime;
-            float accelerationFactor = Mathf.Lerp(0.4f, 1f, timeSinceWallJump / 0.5f);
-            float acceleration = (_grounded ? _stats.Acceleration : _stats.FallAcceleration) * accelerationFactor;
-            _frameVelocity.x = Mathf.SmoothDamp(_frameVelocity.x, targetVelocityX, ref _displacementXSmoothing, acceleration);
-        }
-
-        if (Mathf.Abs(_frameVelocity.x) < 0.05f)
-        {
-            _frameVelocity.x = 0;
-        }
+        _frameVelocity.x = targetVelocityX;
     }
 
 

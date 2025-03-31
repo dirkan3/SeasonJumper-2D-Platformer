@@ -25,7 +25,7 @@ public class ScriptableStats : ScriptableObject
     public float MaxSpeed = 14f;
 
     [Tooltip("The player's capacity to gain horizontal speed")]
-    public float Acceleration = 12f;
+    public float Acceleration = 1000f;
 
     [SerializeField] public float Deceleration = 5;
 
@@ -76,7 +76,7 @@ public class ScriptableStats : ScriptableObject
     [SerializeField] public float CoyoteTime = .15f;
 
     [Tooltip("The amount of time we buffer a jump. This allows jump input before actually hitting the ground")]
-    [SerializeField] public float JumpBuffer = 0.1f;
+    [SerializeField] public float JumpBuffer = 0.2f;
 
     [SerializeField, Range(1, 3)] public int MaxExtraJumps = 1;
 
